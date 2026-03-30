@@ -17,15 +17,8 @@
     --text: #e2e8f0;
     --text-muted: #64748b;
     --success: #10b981;
-    --shopee: #ee4d2d;
-    --lazada: #0f146b;
-    --supersport: #006633;
-    --direct: #d97706;
-    --other: #6366f1;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'Sarabun', sans-serif;
     background: var(--bg);
@@ -33,528 +26,249 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-
-  /* Grid background */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: 
+    background-image:
       linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
   }
-
-  .container {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 24px 16px 60px;
-    position: relative;
-    z-index: 1;
-  }
+  .container { max-width: 700px; margin: 0 auto; padding: 24px 16px 60px; position: relative; z-index: 1; }
 
   /* Header */
-  .header {
-    text-align: center;
-    margin-bottom: 32px;
-    padding-top: 16px;
-  }
-
+  .header { text-align: center; margin-bottom: 28px; padding-top: 16px; }
   .logo-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0,212,255,0.08);
-    border: 1px solid rgba(0,212,255,0.2);
-    border-radius: 100px;
-    padding: 6px 16px 6px 8px;
-    margin-bottom: 16px;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 100px; padding: 6px 16px 6px 8px; margin-bottom: 16px;
+    font-family: 'Space Mono', monospace; font-size: 11px; color: var(--accent);
+    letter-spacing: 0.1em; text-transform: uppercase;
   }
-
-  .logo-dot {
-    width: 8px; height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
+  .logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
   @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,212,255,0.4); }
-    50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(0,212,255,0); }
+    0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(0,212,255,0.4); }
+    50% { opacity:.8; box-shadow: 0 0 0 6px rgba(0,212,255,0); }
   }
-
   .header h1 {
-    font-size: 28px;
-    font-weight: 700;
-    background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.2;
-    margin-bottom: 6px;
+    font-size: 28px; font-weight: 700;
+    background: linear-gradient(135deg,#fff 0%,var(--accent) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    line-height: 1.2; margin-bottom: 6px;
   }
-
-  .header p {
-    color: var(--text-muted);
-    font-size: 14px;
-  }
+  .header p { color: var(--text-muted); font-size: 14px; }
 
   /* Card */
   .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 24px;
-    margin-bottom: 16px;
-    position: relative;
-    overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px; margin-bottom: 16px;
+    position: relative; overflow: hidden;
   }
-
   .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
     background: linear-gradient(90deg, transparent, rgba(0,212,255,0.3), transparent);
   }
-
   .section-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
   }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
+  /* Tabs for settings */
+  .tab-bar { display: flex; gap: 4px; margin-bottom: 16px; }
+  .tab-btn {
+    flex: 1; background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text-muted); border-radius: 8px; padding: 8px;
+    cursor: pointer; font-family: 'Sarabun', sans-serif; font-size: 12px;
+    font-weight: 600; transition: all 0.2s;
   }
+  .tab-btn.active { background: rgba(0,212,255,0.1); border-color: var(--accent); color: var(--accent); }
 
-  /* Channel selector */
-  .channel-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 4px;
-  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
 
-  .channel-btn {
-    position: relative;
-    cursor: pointer;
-  }
-
-  .channel-btn input {
-    position: absolute;
-    opacity: 0;
-    width: 0; height: 0;
-  }
-
+  /* Channel grid */
+  .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .channel-btn { position: relative; cursor: pointer; }
+  .channel-btn input { position: absolute; opacity: 0; width: 0; height: 0; }
   .channel-label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    padding: 12px 8px;
-    background: var(--surface2);
-    border: 2px solid var(--border);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    padding: 12px 8px; background: var(--surface2); border: 2px solid var(--border);
+    border-radius: 12px; cursor: pointer; transition: all 0.2s; text-align: center;
   }
-
-  .channel-icon {
-    font-size: 20px;
-    line-height: 1;
-  }
-
-  .channel-name {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    transition: color 0.2s;
-  }
-
+  .channel-icon { font-size: 20px; line-height: 1; }
+  .channel-name { font-size: 11px; font-weight: 600; color: var(--text-muted); transition: color 0.2s; }
   .channel-btn input:checked + .channel-label {
-    border-color: var(--accent);
-    background: rgba(0,212,255,0.08);
+    border-color: var(--accent); background: rgba(0,212,255,0.08);
     box-shadow: 0 0 12px rgba(0,212,255,0.15);
   }
+  .channel-btn input:checked + .channel-label .channel-name { color: var(--accent); }
 
-  .channel-btn input:checked + .channel-label .channel-name {
-    color: var(--accent);
-  }
-
-  /* Form fields */
-  .form-group {
-    margin-bottom: 16px;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  label {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
+  /* Form */
+  .form-group { margin-bottom: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
   input, select, textarea {
-    width: 100%;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    color: var(--text);
-    font-family: 'Sarabun', sans-serif;
-    font-size: 15px;
-    padding: 12px 14px;
-    transition: all 0.2s;
-    outline: none;
-    -webkit-appearance: none;
+    width: 100%; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-family: 'Sarabun', sans-serif;
+    font-size: 15px; padding: 12px 14px; transition: all 0.2s; outline: none; -webkit-appearance: none;
   }
-
   input:focus, select:focus, textarea:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+    border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
   }
-
-  input[type="date"] {
-    color-scheme: dark;
-  }
-
-  select option {
-    background: var(--surface);
-    color: var(--text);
-  }
+  input[type="date"] { color-scheme: dark; }
+  select option { background: var(--surface); color: var(--text); }
 
   /* Product rows */
-  .product-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
+  .product-list { display: flex; flex-direction: column; gap: 10px; }
   .product-row {
-    display: grid;
-    grid-template-columns: 1fr 80px 110px 36px;
-    gap: 8px;
-    align-items: end;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px;
-    position: relative;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px;
     animation: slideIn 0.2s ease;
   }
-
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .product-row label {
-    font-size: 10px;
-    margin-bottom: 4px;
-  }
-
+  @keyframes slideIn { from { opacity:0; transform: translateY(-8px); } to { opacity:1; transform: translateY(0); } }
+  .product-row-top { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .product-row-bottom { display: grid; grid-template-columns: 80px 1fr auto auto; gap: 8px; align-items: end; }
+  .product-row label { font-size: 10px; margin-bottom: 4px; }
   .product-row input, .product-row select {
-    background: rgba(255,255,255,0.04);
-    border-color: rgba(255,255,255,0.08);
-    font-size: 13px;
-    padding: 8px 10px;
-    border-radius: 8px;
+    background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);
+    font-size: 13px; padding: 8px 10px; border-radius: 8px;
   }
 
-  .total-display {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    color: var(--accent);
-    text-align: right;
-    padding: 8px 0 2px;
-    font-weight: 700;
-    align-self: end;
-    padding-bottom: 10px;
+  /* ✅ Fixed price display */
+  .price-display {
+    background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 8px; padding: 8px 12px; text-align: right;
   }
+  .price-display-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+  .price-display-value { font-family: 'Space Mono', monospace; font-size: 15px; color: var(--accent); font-weight: 700; }
 
   .remove-btn {
-    background: rgba(255,100,100,0.1);
-    border: 1px solid rgba(255,100,100,0.2);
-    color: #ff6464;
-    border-radius: 8px;
-    width: 36px; height: 36px;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: end;
-    transition: all 0.2s;
+    background: rgba(255,100,100,0.1); border: 1px solid rgba(255,100,100,0.2);
+    color: #ff6464; border-radius: 8px; width: 36px; height: 36px;
+    cursor: pointer; font-size: 16px; display: flex; align-items: center;
+    justify-content: center; align-self: end; transition: all 0.2s; flex-shrink: 0;
   }
-
-  .remove-btn:hover {
-    background: rgba(255,100,100,0.2);
-  }
-
+  .remove-btn:hover { background: rgba(255,100,100,0.2); }
   .add-product-btn {
-    width: 100%;
-    background: transparent;
-    border: 1px dashed var(--border);
-    color: var(--text-muted);
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
-    font-family: 'Sarabun', sans-serif;
-    font-size: 13px;
-    transition: all 0.2s;
-    margin-top: 8px;
+    width: 100%; background: transparent; border: 1px dashed var(--border);
+    color: var(--text-muted); border-radius: 10px; padding: 10px;
+    cursor: pointer; font-family: 'Sarabun', sans-serif; font-size: 13px;
+    transition: all 0.2s; margin-top: 8px;
   }
+  .add-product-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,212,255,0.04); }
 
-  .add-product-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: rgba(0,212,255,0.04);
-  }
-
-  /* Summary bar */
+  /* Summary */
   .summary-bar {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 4px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px;
+    display: flex; justify-content: space-between; align-items: center; margin-top: 12px;
   }
+  .summary-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .summary-value { font-family: 'Space Mono', monospace; font-size: 22px; font-weight: 700; color: var(--accent); }
 
-  .summary-label {
-    font-size: 12px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
+  /* Stats */
+  .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 16px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 12px; text-align: center; }
+  .stat-num { font-family: 'Space Mono', monospace; font-size: 18px; font-weight: 700; color: var(--accent); display: block; margin-bottom: 2px; }
+  .stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-  .summary-value {
-    font-family: 'Space Mono', monospace;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  /* Submit button */
+  /* Submit */
   .submit-btn {
-    width: 100%;
-    background: linear-gradient(135deg, var(--accent) 0%, #0099cc 100%);
-    border: none;
-    border-radius: 12px;
-    color: #000;
-    font-family: 'Sarabun', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 16px;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 8px;
-    letter-spacing: 0.02em;
+    width: 100%; background: linear-gradient(135deg, var(--accent) 0%, #0099cc 100%);
+    border: none; border-radius: 12px; color: #000;
+    font-family: 'Sarabun', sans-serif; font-size: 16px; font-weight: 700;
+    padding: 16px; cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px;
   }
-
-  .submit-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(0,212,255,0.3);
-  }
-
-  .submit-btn:active {
-    transform: translateY(0);
-  }
-
-  .submit-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  /* Toast */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: var(--success);
-    color: #fff;
-    padding: 14px 24px;
-    border-radius: 100px;
-    font-weight: 600;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 100;
-    white-space: nowrap;
-  }
-
-  .toast.show {
-    transform: translateX(-50%) translateY(0);
-  }
-
-  .toast.error {
-    background: #ef4444;
-  }
-
-  /* Setup banner */
-  .setup-banner {
-    background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(0,212,255,0.08));
-    border: 1px solid rgba(124,58,237,0.3);
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 16px;
-    font-size: 13px;
-    line-height: 1.6;
-  }
-
-  .setup-banner strong {
-    color: #a78bfa;
-    display: block;
-    margin-bottom: 4px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .setup-banner code {
-    background: rgba(255,255,255,0.08);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    word-break: break-all;
-  }
-
-  .config-input {
-    margin-top: 10px;
-  }
-
-  /* Spinner */
-  .spinner {
-    width: 18px; height: 18px;
-    border: 2px solid rgba(0,0,0,0.3);
-    border-top-color: #000;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    display: none;
-  }
-
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-
+  .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,212,255,0.3); }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  .spinner { width:18px; height:18px; border: 2px solid rgba(0,0,0,0.3); border-top-color:#000; border-radius:50%; animation: spin 0.7s linear infinite; display:none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
   .loading .spinner { display: block; }
   .loading .btn-text { display: none; }
 
-  /* Stats row */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 16px;
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--success); color: #fff; padding: 14px 24px;
+    border-radius: 100px; font-weight: 600; font-size: 14px;
+    display: flex; align-items: center; gap: 8px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 100; white-space: nowrap;
   }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.error { background: #ef4444; }
 
-  .stat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 12px;
-    text-align: center;
+  /* Setup banner */
+  .setup-banner {
+    background: linear-gradient(135deg,rgba(124,58,237,0.15),rgba(0,212,255,0.08));
+    border: 1px solid rgba(124,58,237,0.3); border-radius: 12px; padding: 16px; margin-bottom: 16px; font-size: 13px; line-height: 1.6;
   }
+  .setup-banner strong { color: #a78bfa; display: block; margin-bottom: 4px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
 
-  .stat-num {
-    font-family: 'Space Mono', monospace;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--accent);
-    display: block;
-    margin-bottom: 2px;
+  /* Manage panel items */
+  .manage-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+  .manage-item {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 12px;
   }
-
-  .stat-label {
-    font-size: 10px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+  .manage-item-icon { font-size: 16px; }
+  .manage-item-name { flex: 1; font-size: 13px; }
+  .manage-item-del {
+    background: none; border: none; color: var(--text-muted);
+    cursor: pointer; font-size: 16px; padding: 0 4px; transition: color 0.2s;
   }
+  .manage-item-del:hover { color: #ff6464; }
+  .add-row { display: flex; gap: 8px; }
+  .add-row input { flex: 1; font-size: 13px; padding: 8px 12px; }
+  .add-row-btn {
+    background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3);
+    color: var(--accent); border-radius: 8px; padding: 8px 16px;
+    cursor: pointer; font-size: 13px; font-weight: 600; white-space: nowrap; transition: all 0.2s;
+  }
+  .add-row-btn:hover { background: rgba(0,212,255,0.2); }
+  .brand-tag {
+    display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 100px; margin-right: 4px;
+    font-weight: 700; letter-spacing: 0.05em;
+  }
+  .brand-Bowflex { background: rgba(255,107,53,0.15); color: #ff6b35; }
+  .brand-Schwinn { background: rgba(99,102,241,0.15); color: #818cf8; }
+  .brand-Horizon { background: rgba(16,185,129,0.15); color: #34d399; }
+  .brand-Custom { background: rgba(0,212,255,0.15); color: var(--accent); }
 
   @media (max-width: 480px) {
     .form-row { grid-template-columns: 1fr; }
-    .product-row { grid-template-columns: 1fr 70px 100px 32px; }
-    .channel-grid { grid-template-columns: repeat(3, 1fr); }
+    .product-row-top { grid-template-columns: 1fr; }
+    .product-row-bottom { grid-template-columns: 70px 1fr auto auto; }
+    .channel-grid { grid-template-columns: repeat(3,1fr); }
   }
 </style>
 </head>
 <body>
-
 <div class="container">
 
   <!-- Header -->
   <div class="header">
-    <div class="logo-badge">
-      <span class="logo-dot"></span>
-      JHT Thailand · Sales System
-    </div>
+    <div class="logo-badge"><span class="logo-dot"></span>JHT Thailand · Sales System</div>
     <h1>บันทึกข้อมูลการขาย</h1>
     <p>Johnson Health Tech · Bowflex · Schwinn · Horizon</p>
   </div>
 
-  <!-- Setup Banner -->
-  <div class="setup-banner" id="setupBanner">
-    <strong>⚙️ ตั้งค่า Google Sheets (ครั้งแรกเท่านั้น)</strong>
-    วาง URL ของ Google Apps Script Web App ด้านล่าง<br>
-    <small style="color:var(--text-muted)">ดูวิธีสร้าง Script ได้ที่ด้านล่างของหน้า</small>
-    <div class="config-input">
-      <input type="url" id="scriptUrl" placeholder="https://script.google.com/macros/s/.../exec" 
-             style="font-size:12px; padding:10px 12px;">
-    </div>
-  </div>
+  <!-- Hidden script URL input (used by form submit) -->
+  <input type="url" id="scriptUrl" style="display:none;">
 
   <!-- Stats -->
   <div class="stats-row">
-    <div class="stat-card">
-      <span class="stat-num" id="statToday">0</span>
-      <span class="stat-label">บันทึกวันนี้</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num" id="statTotal">0</span>
-      <span class="stat-label">รายการทั้งหมด</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num" id="statAmount">฿0</span>
-      <span class="stat-label">ยอดวันนี้</span>
-    </div>
+    <div class="stat-card"><span class="stat-num" id="statToday">0</span><span class="stat-label">บันทึกวันนี้</span></div>
+    <div class="stat-card"><span class="stat-num" id="statTotal">0</span><span class="stat-label">รายการทั้งหมด</span></div>
+    <div class="stat-card"><span class="stat-num" id="statAmount">฿0</span><span class="stat-label">ยอดวันนี้</span></div>
   </div>
 
   <!-- Form -->
@@ -563,43 +277,7 @@
     <!-- Channel -->
     <div class="card">
       <div class="section-label">01 · ช่องทางการขาย</div>
-      <div class="channel-grid">
-        <label class="channel-btn">
-          <input type="radio" name="channel" value="Shopee" required>
-          <div class="channel-label">
-            <span class="channel-icon">🛍️</span>
-            <span class="channel-name">Shopee</span>
-          </div>
-        </label>
-        <label class="channel-btn">
-          <input type="radio" name="channel" value="Lazada">
-          <div class="channel-label">
-            <span class="channel-icon">📦</span>
-            <span class="channel-name">Lazada</span>
-          </div>
-        </label>
-        <label class="channel-btn">
-          <input type="radio" name="channel" value="SUPER SPORT">
-          <div class="channel-label">
-            <span class="channel-icon">🏪</span>
-            <span class="channel-name">Super Sport</span>
-          </div>
-        </label>
-        <label class="channel-btn">
-          <input type="radio" name="channel" value="Direct">
-          <div class="channel-label">
-            <span class="channel-icon">🤝</span>
-            <span class="channel-name">Direct</span>
-          </div>
-        </label>
-        <label class="channel-btn">
-          <input type="radio" name="channel" value="E-commerce อื่นๆ">
-          <div class="channel-label">
-            <span class="channel-icon">🌐</span>
-            <span class="channel-name">อื่นๆ</span>
-          </div>
-        </label>
-      </div>
+      <div class="channel-grid" id="channelGrid"></div>
     </div>
 
     <!-- Order Info -->
@@ -622,7 +300,8 @@
         </div>
         <div>
           <label>เบอร์โทร / Line</label>
-          <input type="text" id="customerContact" placeholder="08x-xxx-xxxx">
+          <!-- ✅ type="text" to preserve leading zero -->
+          <input type="text" id="customerContact" placeholder="08x-xxx-xxxx" inputmode="tel">
         </div>
       </div>
     </div>
@@ -630,17 +309,10 @@
     <!-- Products -->
     <div class="card">
       <div class="section-label">03 · สินค้า</div>
-      <div class="product-list" id="productList">
-        <!-- Product rows added by JS -->
-      </div>
-      <button type="button" class="add-product-btn" onclick="addProductRow()">
-        + เพิ่มสินค้า
-      </button>
-
-      <div class="summary-bar" style="margin-top:16px;">
-        <div>
-          <div class="summary-label">ยอดรวมทั้งสิ้น</div>
-        </div>
+      <div class="product-list" id="productList"></div>
+      <button type="button" class="add-product-btn" onclick="addProductRow()">+ เพิ่มสินค้า</button>
+      <div class="summary-bar">
+        <div class="summary-label">ยอดรวมทั้งสิ้น</div>
         <div class="summary-value" id="grandTotal">฿0</div>
       </div>
     </div>
@@ -648,69 +320,112 @@
     <!-- Notes -->
     <div class="card">
       <div class="section-label">04 · หมายเหตุ</div>
-      <div class="form-group" style="margin-bottom:0">
-        <textarea id="notes" rows="2" placeholder="หมายเหตุเพิ่มเติม (ไม่บังคับ)" 
-                  style="resize:vertical; min-height:60px;"></textarea>
-      </div>
+      <textarea id="notes" rows="2" placeholder="หมายเหตุเพิ่มเติม (ไม่บังคับ)" style="resize:vertical;min-height:60px;margin-bottom:0"></textarea>
     </div>
 
-    <!-- Submit -->
     <button type="submit" class="submit-btn" id="submitBtn">
       <span class="btn-text">📤 บันทึกข้อมูลลง Google Sheets</span>
       <div class="spinner"></div>
     </button>
-
   </form>
 
-  <!-- Instructions -->
-  <div class="card" style="margin-top:24px; opacity:0.7;">
-    <div class="section-label">วิธีเชื่อมต่อ Google Sheets</div>
-    <div style="font-size:13px; line-height:1.8; color:var(--text-muted);">
-      <b style="color:var(--text);">Step 1</b> · เปิด Google Sheets → Extensions → Apps Script<br>
-      <b style="color:var(--text);">Step 2</b> · วาง Code ด้านล่าง แล้ว Deploy → New deployment → Web App<br>
-      <b style="color:var(--text);">Step 3</b> · ตั้ง "Execute as: Me" และ "Who has access: Anyone"<br>
-      <b style="color:var(--text);">Step 4</b> · Copy URL แล้ววางในช่องด้านบน<br><br>
+  <!-- Manage Panel -->
+  <div class="card" style="margin-top:24px;">
+    <div class="section-label">⚙️ จัดการ Channel & สินค้า</div>
+    <div class="tab-bar">
+      <button type="button" class="tab-btn active" onclick="switchTab('channels',this)">🏪 Channel</button>
+      <button type="button" class="tab-btn" onclick="switchTab('products',this)">📦 สินค้า / SKU</button>
+      <button type="button" class="tab-btn" onclick="switchTab('script',this)">🔗 Script</button>
+    </div>
+
+    <!-- Channels tab -->
+    <div class="tab-panel active" id="tab-channels">
+      <div class="manage-list" id="channelList"></div>
+      <div class="add-row">
+        <input type="text" id="newChannelName" placeholder="ชื่อ channel ใหม่ เช่น TikTok Shop">
+        <input type="text" id="newChannelIcon" placeholder="Emoji 🛒" style="width:70px;flex:none;">
+        <button type="button" class="add-row-btn" onclick="addChannel()">+ เพิ่ม</button>
+      </div>
+    </div>
+
+    <!-- Products tab -->
+    <div class="tab-panel" id="tab-products">
+      <div style="margin-bottom:10px;">
+        <label style="margin-bottom:6px;">Filter Brand</label>
+        <select id="filterBrand" onchange="renderProductList()" style="font-size:13px;padding:8px 10px;">
+          <option value="">ทุก Brand</option>
+        </select>
+      </div>
+      <div class="manage-list" id="productMgmtList"></div>
+      <div class="add-row" style="flex-wrap:wrap;gap:6px;">
+        <select id="newProductBrand" style="flex:none;width:130px;font-size:13px;padding:8px 10px;">
+          <option value="">-- Brand --</option>
+        </select>
+        <input type="text" id="newProductName" placeholder="ชื่อรุ่น / SKU" style="flex:1;min-width:120px;">
+        <button type="button" class="add-row-btn" onclick="addProduct()">+ เพิ่ม</button>
+      </div>
+      <div style="margin-top:10px;">
+        <div class="add-row">
+          <input type="text" id="newBrandName" placeholder="เพิ่ม Brand ใหม่ เช่น Johnson">
+          <button type="button" class="add-row-btn" onclick="addBrand()">+ Brand</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script tab -->
+    <div class="tab-panel" id="tab-script">
+      <!-- URL input inside tab -->
+      <div style="margin-bottom:16px;">
+        <label style="margin-bottom:6px; color:var(--accent);">🔗 Google Apps Script URL</label>
+        <div style="display:flex; gap:8px;">
+          <input type="url" id="scriptUrlVisible" placeholder="https://script.google.com/macros/s/.../exec"
+                 style="font-size:13px; padding:10px 12px; flex:1;">
+          <button type="button" class="add-row-btn" onclick="saveScriptUrl()">บันทึก</button>
+        </div>
+        <div id="urlStatus" style="font-size:11px; margin-top:6px; color:var(--text-muted);"></div>
+      </div>
+      <p style="font-size:13px;color:var(--text-muted);line-height:1.8;margin-bottom:12px;">
+        <b style="color:var(--text);">Step 1</b> · เปิด Google Sheets → Extensions → Apps Script<br>
+        <b style="color:var(--text);">Step 2</b> · ลบ code เดิม วาง code ด้านล่าง → Save<br>
+        <b style="color:var(--text);">Step 3</b> · Deploy → New deployment → Web App<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Execute as: <b style="color:var(--accent)">Me</b> · Who has access: <b style="color:var(--accent)">Anyone</b><br>
+        <b style="color:var(--text);">Step 4</b> · Copy URL → วางในช่องด้านบน → กด บันทึก
+      </p>
       <details>
-        <summary style="cursor:pointer; color:var(--accent); font-size:12px;">📋 คลิกดู Google Apps Script Code</summary>
-        <pre style="margin-top:12px; background:var(--surface2); padding:14px; border-radius:10px; font-size:11px; overflow-x:auto; color:#a0aec0; white-space:pre-wrap; font-family:'Space Mono',monospace; line-height:1.6;">function doPost(e) {
+        <summary style="cursor:pointer;color:var(--accent);font-size:12px;margin-bottom:8px;">📋 คลิกดู Google Apps Script Code</summary>
+        <pre style="background:var(--surface2);padding:14px;border-radius:10px;font-size:11px;overflow-x:auto;color:#a0aec0;white-space:pre-wrap;font-family:'Space Mono',monospace;line-height:1.6;">function doPost(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet()
-    .getSheetByName("Sales") || 
-    SpreadsheetApp.getActiveSpreadsheet()
-    .getActiveSheet();
-  
+    .getSheetByName("Sales") ||
+    SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
   var data = JSON.parse(e.postData.contents);
-  
-  // Add header if empty
+
   if (sheet.getLastRow() === 0) {
     sheet.appendRow([
-      "Timestamp","Date","Channel",
-      "Order Ref","Customer","Contact",
-      "Brand","Product","Qty","Price",
-      "Line Total","Grand Total","Notes"
+      "Timestamp","Date","Channel","Order Ref",
+      "Customer","Contact","Brand","Product",
+      "Qty","Price","Line Total","Grand Total","Notes"
     ]);
   }
-  
-  var items = data.items;
-  var grandTotal = data.grandTotal;
-  
-  items.forEach(function(item, i) {
+
+  data.items.forEach(function(item, i) {
     sheet.appendRow([
       new Date(),
       data.date,
       data.channel,
       data.orderRef,
       data.customer,
-      data.contact,
+      "'" + data.contact,  // ← prefix ' keeps leading zero
       item.brand,
       item.product,
       item.qty,
       item.price,
       item.lineTotal,
-      i === 0 ? grandTotal : "",
+      i === 0 ? data.grandTotal : "",
       i === 0 ? data.notes : ""
     ]);
   });
-  
+
   return ContentService
     .createTextOutput(JSON.stringify({status:"ok"}))
     .setMimeType(ContentService.MimeType.JSON);
@@ -726,214 +441,354 @@ function doGet(e) {
   </div>
 
 </div>
-
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <script>
-  // Products data
-  const PRODUCTS = {
-    Bowflex: ["T8.5J Treadmill","T10 Treadmill","T22 Treadmill","BXT116 Treadmill","Max Trainer M6","Max Trainer M8","Velocore Bike","C6 Bike","VeloCore 16","Revolution Home Gym","Xtreme 2 SE","Blaze Home Gym"],
-    Schwinn: ["800IC Bike","810 Treadmill","830 Treadmill","A10 Bike","IC4 Bike","170 Upright Bike","270 Recumbent Bike","510U Upright","510R Recumbent"],
-    Horizon: ["T101 Treadmill","T202 Treadmill","T303 Treadmill","7.0AT Treadmill","7.4AT Treadmill","GR7 Elliptical","EX-59 Elliptical","5.0U Upright Bike","5.0R Recumbent"]
-  };
+// ─── DEFAULT DATA ───────────────────────────────────────────────
+const DEFAULT_CHANNELS = [
+  { name:'Shopee',       icon:'🛍️' },
+  { name:'Lazada',       icon:'📦' },
+  { name:'SUPER SPORT',  icon:'🏪' },
+  { name:'Direct',       icon:'🤝' },
+  { name:'Website Direct', icon:'🌐' },
+  { name:'E-commerce อื่นๆ', icon:'🛒' },
+];
 
-  // Local stats
-  let localStats = JSON.parse(localStorage.getItem('jht_stats') || '{"today":"","count":0,"total":0,"dayCount":0,"dayTotal":0}');
-  
-  // Check if new day
-  const today = new Date().toISOString().split('T')[0];
-  if (localStats.today !== today) {
-    localStats.today = today;
-    localStats.dayCount = 0;
-    localStats.dayTotal = 0;
-  }
+const DEFAULT_PRODUCTS = {
+  Bowflex: ["T8.5J Treadmill","T10 Treadmill","T22 Treadmill","BXT116 Treadmill","Max Trainer M6","Max Trainer M8","Velocore Bike","C6 Bike","VeloCore 16","Revolution Home Gym","Xtreme 2 SE","Blaze Home Gym"],
+  Schwinn: ["800IC Bike","810 Treadmill","830 Treadmill","A10 Bike","IC4 Bike","170 Upright Bike","270 Recumbent Bike","510U Upright","510R Recumbent"],
+  Horizon: ["T101 Treadmill","T202 Treadmill","T303 Treadmill","7.0AT Treadmill","7.4AT Treadmill","GR7 Elliptical","EX-59 Elliptical","5.0U Upright Bike","5.0R Recumbent"]
+};
 
-  updateStats();
+// ─── LOAD / SAVE ────────────────────────────────────────────────
+function load(key, def) {
+  try { return JSON.parse(localStorage.getItem(key)) || def; } catch { return def; }
+}
+function save(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
 
-  // Set today's date
-  document.getElementById('saleDate').value = today;
+let channels = load('jht_channels', DEFAULT_CHANNELS);
+let products  = load('jht_products', DEFAULT_PRODUCTS);
+let stats     = load('jht_stats', { today:'', count:0, dayCount:0, dayTotal:0 });
 
-  // Load saved script URL
-  const savedUrl = localStorage.getItem('jht_script_url');
-  if (savedUrl) {
-    document.getElementById('scriptUrl').value = savedUrl;
-  }
+const today = new Date().toISOString().split('T')[0];
+if (stats.today !== today) { stats.today = today; stats.dayCount = 0; stats.dayTotal = 0; }
 
-  // Save URL on change
-  document.getElementById('scriptUrl').addEventListener('change', function() {
-    localStorage.setItem('jht_script_url', this.value);
+// ─── INIT ────────────────────────────────────────────────────────
+document.getElementById('saleDate').value = today;
+const savedUrl = localStorage.getItem('jht_script_url');
+if (savedUrl) {
+  document.getElementById('scriptUrl').value = savedUrl;
+  document.getElementById('scriptUrlVisible').value = savedUrl;
+  document.getElementById('urlStatus').textContent = '✅ URL บันทึกแล้ว';
+  document.getElementById('urlStatus').style.color = '#10b981';
+}
+
+function saveScriptUrl() {
+  const url = document.getElementById('scriptUrlVisible').value.trim();
+  if (!url) { showToast('กรุณาใส่ URL ก่อน', 'error'); return; }
+  localStorage.setItem('jht_script_url', url);
+  document.getElementById('scriptUrl').value = url;
+  document.getElementById('urlStatus').textContent = '✅ URL บันทึกแล้ว พร้อมใช้งาน';
+  document.getElementById('urlStatus').style.color = '#10b981';
+  showToast('บันทึก URL สำเร็จ!');
+}
+
+document.getElementById('scriptUrlVisible').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') saveScriptUrl();
+});
+
+renderChannelGrid();
+renderChannelList();
+renderProductDropdowns();
+renderProductList();
+addProductRow();
+updateStats();
+
+// ─── CHANNELS ────────────────────────────────────────────────────
+function renderChannelGrid() {
+  const grid = document.getElementById('channelGrid');
+  grid.innerHTML = channels.map((ch, i) => `
+    <label class="channel-btn">
+      <input type="radio" name="channel" value="${ch.name}" ${i===0?'':''}> 
+      <div class="channel-label">
+        <span class="channel-icon">${ch.icon}</span>
+        <span class="channel-name">${ch.name}</span>
+      </div>
+    </label>`).join('');
+}
+
+function renderChannelList() {
+  document.getElementById('channelList').innerHTML = channels.map((ch, i) => `
+    <div class="manage-item">
+      <span class="manage-item-icon">${ch.icon}</span>
+      <span class="manage-item-name">${ch.name}</span>
+      <button type="button" class="manage-item-del" onclick="deleteChannel(${i})" title="ลบ">×</button>
+    </div>`).join('');
+}
+
+function addChannel() {
+  const name = document.getElementById('newChannelName').value.trim();
+  const icon = document.getElementById('newChannelIcon').value.trim() || '🔹';
+  if (!name) { showToast('กรุณาใส่ชื่อ channel', 'error'); return; }
+  channels.push({ name, icon });
+  save('jht_channels', channels);
+  document.getElementById('newChannelName').value = '';
+  document.getElementById('newChannelIcon').value = '';
+  renderChannelGrid();
+  renderChannelList();
+  showToast(`เพิ่ม channel "${name}" แล้ว`);
+}
+
+function deleteChannel(i) {
+  if (channels.length <= 1) { showToast('ต้องมีอย่างน้อย 1 channel', 'error'); return; }
+  if (!confirm(`ลบ channel "${channels[i].name}" ?`)) return;
+  channels.splice(i, 1);
+  save('jht_channels', channels);
+  renderChannelGrid();
+  renderChannelList();
+}
+
+// ─── PRODUCTS ────────────────────────────────────────────────────
+function getBrands() { return Object.keys(products); }
+
+function renderProductDropdowns() {
+  // filter select
+  const fb = document.getElementById('filterBrand');
+  const cur = fb.value;
+  fb.innerHTML = '<option value="">ทุก Brand</option>' +
+    getBrands().map(b => `<option ${b===cur?'selected':''}>${b}</option>`).join('');
+  // new product brand select
+  const nb = document.getElementById('newProductBrand');
+  nb.innerHTML = '<option value="">-- Brand --</option>' +
+    getBrands().map(b => `<option>${b}</option>`).join('');
+}
+
+function renderProductList() {
+  const filter = document.getElementById('filterBrand').value;
+  const list = document.getElementById('productMgmtList');
+  let html = '';
+  getBrands().forEach(brand => {
+    if (filter && brand !== filter) return;
+    const tagClass = `brand-${brand.replace(/\s+/g,'')}`;
+    products[brand].forEach((p, i) => {
+      html += `<div class="manage-item">
+        <span class="brand-tag ${tagClass}">${brand}</span>
+        <span class="manage-item-name" style="font-size:12px;">${p}</span>
+        <button type="button" class="manage-item-del" onclick="deleteProduct('${brand}',${i})" title="ลบ">×</button>
+      </div>`;
+    });
   });
+  list.innerHTML = html || '<div style="color:var(--text-muted);font-size:13px;text-align:center;padding:12px;">ไม่มีสินค้า</div>';
+}
 
-  // Add first product row
-  addProductRow();
+function addProduct() {
+  const brand = document.getElementById('newProductBrand').value;
+  const name  = document.getElementById('newProductName').value.trim();
+  if (!brand) { showToast('กรุณาเลือก Brand', 'error'); return; }
+  if (!name)  { showToast('กรุณาใส่ชื่อสินค้า', 'error'); return; }
+  if (!products[brand]) products[brand] = [];
+  products[brand].push(name);
+  save('jht_products', products);
+  document.getElementById('newProductName').value = '';
+  renderProductList();
+  showToast(`เพิ่ม "${name}" ใน ${brand} แล้ว`);
+}
 
-  function addProductRow() {
-    const list = document.getElementById('productList');
-    const idx = list.children.length;
-    const row = document.createElement('div');
-    row.className = 'product-row';
-    row.dataset.idx = idx;
-    row.innerHTML = `
+function addBrand() {
+  const name = document.getElementById('newBrandName').value.trim();
+  if (!name) { showToast('กรุณาใส่ชื่อ Brand', 'error'); return; }
+  if (products[name]) { showToast('Brand นี้มีอยู่แล้ว', 'error'); return; }
+  products[name] = [];
+  save('jht_products', products);
+  document.getElementById('newBrandName').value = '';
+  renderProductDropdowns();
+  renderProductList();
+  showToast(`เพิ่ม Brand "${name}" แล้ว`);
+}
+
+function deleteProduct(brand, i) {
+  if (!confirm(`ลบ "${products[brand][i]}" ?`)) return;
+  products[brand].splice(i, 1);
+  save('jht_products', products);
+  renderProductList();
+}
+
+// ─── PRODUCT ROW IN FORM ─────────────────────────────────────────
+function addProductRow() {
+  const list = document.getElementById('productList');
+  const idx  = Date.now(); // unique key
+  const row  = document.createElement('div');
+  row.className = 'product-row';
+  row.dataset.idx = idx;
+
+  const brandOpts = getBrands().map(b => `<option>${b}</option>`).join('');
+
+  row.innerHTML = `
+    <div class="product-row-top">
       <div>
-        <label>สินค้า</label>
-        <select class="brand-select" onchange="updateProducts(this, ${idx})">
-          <option value="">-- Brand --</option>
-          <option>Bowflex</option>
-          <option>Schwinn</option>
-          <option>Horizon</option>
+        <label>Brand</label>
+        <select class="brand-select" onchange="updateFormProducts(this,'${idx}')">
+          <option value="">-- Brand --</option>${brandOpts}
         </select>
-        <select class="product-select" style="margin-top:6px;" onchange="calcRow(${idx})">
+      </div>
+      <div>
+        <label>รุ่น / SKU</label>
+        <select class="product-select" onchange="calcRow('${idx}')">
           <option value="">-- รุ่น --</option>
         </select>
       </div>
+    </div>
+    <div class="product-row-bottom">
       <div>
         <label>จำนวน</label>
-        <input type="number" class="qty-input" value="1" min="1" oninput="calcRow(${idx})">
+        <input type="number" class="qty-input" value="1" min="1" oninput="calcRow('${idx}')">
       </div>
       <div>
         <label>ราคา (฿)</label>
-        <input type="number" class="price-input" placeholder="0" min="0" oninput="calcRow(${idx})">
+        <input type="number" class="price-input" placeholder="0" min="0" oninput="calcRow('${idx}')">
       </div>
-      <div class="total-display" id="rowTotal${idx}">฿0</div>
+      <div class="price-display">
+        <div class="price-display-label">รวม</div>
+        <div class="price-display-value" id="rowTotal${idx}">฿0</div>
+      </div>
       <button type="button" class="remove-btn" onclick="removeRow(this)" title="ลบ">×</button>
-    `;
-    list.appendChild(row);
-  }
+    </div>`;
+  list.appendChild(row);
+}
 
-  function updateProducts(brandSelect, idx) {
-    const brand = brandSelect.value;
-    const row = document.querySelector(`.product-row[data-idx="${idx}"]`);
-    const productSelect = row.querySelector('.product-select');
-    productSelect.innerHTML = '<option value="">-- รุ่น --</option>';
-    if (PRODUCTS[brand]) {
-      PRODUCTS[brand].forEach(p => {
-        productSelect.innerHTML += `<option>${p}</option>`;
-      });
-    }
-  }
+function updateFormProducts(sel, idx) {
+  const brand = sel.value;
+  const row = document.querySelector(`.product-row[data-idx="${idx}"]`);
+  const ps  = row.querySelector('.product-select');
+  ps.innerHTML = '<option value="">-- รุ่น --</option>';
+  (products[brand] || []).forEach(p => { ps.innerHTML += `<option>${p}</option>`; });
+}
 
-  function calcRow(idx) {
-    const row = document.querySelector(`.product-row[data-idx="${idx}"]`);
-    const qty = parseFloat(row.querySelector('.qty-input').value) || 0;
-    const price = parseFloat(row.querySelector('.price-input').value) || 0;
-    const total = qty * price;
-    document.getElementById(`rowTotal${idx}`).textContent = '฿' + total.toLocaleString();
-    calcGrandTotal();
-  }
+function calcRow(idx) {
+  const row   = document.querySelector(`.product-row[data-idx="${idx}"]`);
+  const qty   = parseFloat(row.querySelector('.qty-input').value)   || 0;
+  const price = parseFloat(row.querySelector('.price-input').value) || 0;
+  const total = qty * price;
+  document.getElementById(`rowTotal${idx}`).textContent = '฿' + total.toLocaleString('th-TH');
+  calcGrandTotal();
+}
 
-  function calcGrandTotal() {
-    let grand = 0;
-    document.querySelectorAll('.product-row').forEach(row => {
-      const qty = parseFloat(row.querySelector('.qty-input').value) || 0;
-      const price = parseFloat(row.querySelector('.price-input').value) || 0;
-      grand += qty * price;
-    });
-    document.getElementById('grandTotal').textContent = '฿' + grand.toLocaleString();
-  }
-
-  function removeRow(btn) {
-    const rows = document.querySelectorAll('.product-row');
-    if (rows.length <= 1) { showToast('ต้องมีสินค้าอย่างน้อย 1 รายการ', 'error'); return; }
-    btn.closest('.product-row').remove();
-    calcGrandTotal();
-  }
-
-  function updateStats() {
-    document.getElementById('statToday').textContent = localStats.dayCount;
-    document.getElementById('statTotal').textContent = localStats.count;
-    const amt = localStats.dayTotal;
-    document.getElementById('statAmount').textContent = amt >= 1000 ? '฿' + (amt/1000).toFixed(1) + 'K' : '฿' + amt;
-  }
-
-  function showToast(msg, type = 'success') {
-    const t = document.getElementById('toast');
-    t.textContent = (type === 'success' ? '✓ ' : '⚠ ') + msg;
-    t.className = 'toast show' + (type === 'error' ? ' error' : '');
-    setTimeout(() => t.className = 'toast', 3000);
-  }
-
-  // Form submit
-  document.getElementById('salesForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const scriptUrl = document.getElementById('scriptUrl').value.trim();
-    if (!scriptUrl) {
-      showToast('กรุณาใส่ Google Apps Script URL ก่อนครับ', 'error');
-      return;
-    }
-
-    // Collect products
-    const items = [];
-    let valid = true;
-    document.querySelectorAll('.product-row').forEach(row => {
-      const brand = row.querySelector('.brand-select').value;
-      const product = row.querySelector('.product-select').value;
-      const qty = parseFloat(row.querySelector('.qty-input').value) || 0;
-      const price = parseFloat(row.querySelector('.price-input').value) || 0;
-      if (!brand || !product || qty <= 0 || price <= 0) { valid = false; return; }
-      items.push({ brand, product, qty, price, lineTotal: qty * price });
-    });
-
-    if (!valid || items.length === 0) {
-      showToast('กรุณากรอกข้อมูลสินค้าให้ครบทุกช่อง', 'error');
-      return;
-    }
-
-    const grandTotal = items.reduce((s, i) => s + i.lineTotal, 0);
-
-    const payload = {
-      date: document.getElementById('saleDate').value,
-      channel: document.querySelector('input[name="channel"]:checked')?.value || '',
-      orderRef: document.getElementById('orderRef').value,
-      customer: document.getElementById('customerName').value,
-      contact: document.getElementById('customerContact').value,
-      notes: document.getElementById('notes').value,
-      items,
-      grandTotal
-    };
-
-    if (!payload.channel) {
-      showToast('กรุณาเลือกช่องทางการขายครับ', 'error');
-      return;
-    }
-
-    // Submit
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.classList.add('loading');
-
-    try {
-      await fetch(scriptUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify(payload),
-        headers: { 'Content-Type': 'application/json' }
-      });
-
-      // Update stats
-      localStats.count++;
-      localStats.dayCount++;
-      localStats.dayTotal += grandTotal;
-      localStorage.setItem('jht_stats', JSON.stringify(localStats));
-      updateStats();
-
-      showToast('บันทึกสำเร็จ! ข้อมูลส่งไป Google Sheets แล้ว');
-
-      // Reset form
-      this.reset();
-      document.getElementById('saleDate').value = today;
-      document.getElementById('productList').innerHTML = '';
-      addProductRow();
-      document.getElementById('grandTotal').textContent = '฿0';
-
-    } catch (err) {
-      showToast('เกิดข้อผิดพลาด กรุณาตรวจสอบ URL', 'error');
-    }
-
-    btn.disabled = false;
-    btn.classList.remove('loading');
+function calcGrandTotal() {
+  let grand = 0;
+  document.querySelectorAll('.product-row').forEach(row => {
+    grand += (parseFloat(row.querySelector('.qty-input').value)||0) *
+             (parseFloat(row.querySelector('.price-input').value)||0);
   });
+  document.getElementById('grandTotal').textContent = '฿' + grand.toLocaleString('th-TH');
+}
+
+function removeRow(btn) {
+  if (document.querySelectorAll('.product-row').length <= 1) {
+    showToast('ต้องมีสินค้าอย่างน้อย 1 รายการ', 'error'); return;
+  }
+  btn.closest('.product-row').remove();
+  calcGrandTotal();
+}
+
+// ─── TABS ────────────────────────────────────────────────────────
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  if (el) el.classList.add('active');
+  else document.querySelectorAll('.tab-btn').forEach(b => {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'"+name+"'")) b.classList.add('active');
+  });
+  if (name === 'products') { renderProductDropdowns(); renderProductList(); }
+  if (name === 'script') {
+    const saved = localStorage.getItem('jht_script_url');
+    if (saved) {
+      document.getElementById('scriptUrlVisible').value = saved;
+      document.getElementById('urlStatus').textContent = '✅ URL บันทึกแล้ว';
+      document.getElementById('urlStatus').style.color = '#10b981';
+    }
+  }
+}
+
+// ─── STATS ───────────────────────────────────────────────────────
+function updateStats() {
+  document.getElementById('statToday').textContent  = stats.dayCount;
+  document.getElementById('statTotal').textContent  = stats.count;
+  const amt = stats.dayTotal;
+  document.getElementById('statAmount').textContent = amt >= 1000000
+    ? '฿' + (amt/1000000).toFixed(1) + 'M'
+    : amt >= 1000 ? '฿' + (amt/1000).toFixed(1) + 'K'
+    : '฿' + amt;
+}
+
+// ─── TOAST ───────────────────────────────────────────────────────
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = (type==='success'?'✓ ':'⚠ ') + msg;
+  t.className = 'toast show' + (type==='error'?' error':'');
+  setTimeout(() => t.className='toast', 3000);
+}
+
+// ─── SUBMIT ──────────────────────────────────────────────────────
+document.getElementById('salesForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const scriptUrl = document.getElementById('scriptUrl').value.trim();
+  if (!scriptUrl) { showToast('กรุณาใส่ Script URL ในแถบ 🔗 Script ก่อน', 'error'); switchTab('script'); return; }
+
+  const items = [];
+  let valid = true;
+  document.querySelectorAll('.product-row').forEach(row => {
+    const brand   = row.querySelector('.brand-select').value;
+    const product = row.querySelector('.product-select').value;
+    const qty     = parseFloat(row.querySelector('.qty-input').value)   || 0;
+    const price   = parseFloat(row.querySelector('.price-input').value) || 0;
+    if (!brand || !product || qty <= 0 || price <= 0) { valid = false; return; }
+    items.push({ brand, product, qty, price, lineTotal: qty * price });
+  });
+
+  if (!valid || items.length === 0) { showToast('กรุณากรอกข้อมูลสินค้าให้ครบ', 'error'); return; }
+
+  const channel = document.querySelector('input[name="channel"]:checked')?.value;
+  if (!channel) { showToast('กรุณาเลือกช่องทางการขาย', 'error'); return; }
+
+  const payload = {
+    date:       document.getElementById('saleDate').value,
+    channel,
+    orderRef:   document.getElementById('orderRef').value,
+    customer:   document.getElementById('customerName').value,
+    contact:    document.getElementById('customerContact').value,  // ✅ kept as text
+    notes:      document.getElementById('notes').value,
+    items,
+    grandTotal: items.reduce((s,i) => s + i.lineTotal, 0)
+  };
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.classList.add('loading');
+
+  try {
+    await fetch(scriptUrl, {
+      method: 'POST', mode: 'no-cors',
+      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    stats.count++;  stats.dayCount++;  stats.dayTotal += payload.grandTotal;
+    save('jht_stats', stats);
+    updateStats();
+    showToast('บันทึกสำเร็จ! ข้อมูลส่งไป Google Sheets แล้ว');
+
+    this.reset();
+    document.getElementById('saleDate').value = today;
+    document.getElementById('productList').innerHTML = '';
+    addProductRow();
+    document.getElementById('grandTotal').textContent = '฿0';
+
+  } catch(err) {
+    showToast('เกิดข้อผิดพลาด กรุณาตรวจสอบ URL', 'error');
+  }
+
+  btn.disabled = false; btn.classList.remove('loading');
+});
 </script>
 </body>
 </html>
